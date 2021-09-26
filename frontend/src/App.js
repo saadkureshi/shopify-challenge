@@ -1,10 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+// Import Components
+import Login from './components/Login.jsx';
+import Register from './components/Register.jsx';
+import NavigationBar from './components/NavigationBar.jsx';
 
 function App() {
   return (
     <div className="App">
-      <p>Lets go!</p>
+      <NavigationBar />
+      <Login />
+      <Register />
     </div>
   );
 }
