@@ -10,6 +10,7 @@ import Register from './components/Register.jsx';
 import NavigationBar from './components/NavigationBar.jsx';
 import FileUpload from './components/FileUpload.jsx';
 import Feed from './components/Feed.jsx';
+import Profile from './components/Profile.jsx';
 
 function App() {
 
@@ -21,10 +22,10 @@ function App() {
     <Router>
       <div className="App">
         <NavigationBar />
-        <FileUpload />
           <Switch>
             {currentUser ?
               <Route path="/feed">
+                <FileUpload />
                 <Feed />
               </Route>
               :
@@ -35,8 +36,8 @@ function App() {
             }
             {currentUser ?
               <Route path="/profile">
-                <Login />
-                <Register />
+                <FileUpload />
+                <Profile />
               </Route>
               :
               <Route path="/">

@@ -18,7 +18,7 @@ function Feed() {
 
   return (
     <div className="feed">
-      <h1>FEED</h1>
+      <h1>Feed</h1>
       {feedPics.map(eachPic => {
         return (
           <Image

@@ -15,7 +15,7 @@ function NavigationBar() {
     <div className="navigation-bar">
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-        <Navbar.Brand href="#home">Image Repository</Navbar.Brand>
+        <Navbar.Brand href="/">Image Repository</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
@@ -24,11 +24,12 @@ function NavigationBar() {
           </Nav>
           {userLoggedIn ? 
             <Nav>
-              <Nav.Link href="#deets">Welcome, {userEmail}</Nav.Link>
+              <Nav.Link href="#">Welcome, {userEmail}</Nav.Link>
+              <Nav.Link href="/" onClick={() => localStorage.clear()}>Logout</Nav.Link>
             </Nav>
             :
             <Nav>
-            <Nav.Link href="#deets">Join today for free!</Nav.Link>
+            <Nav.Link href="#">Join today for free!</Nav.Link>
           </Nav>
           }
         </Navbar.Collapse>
