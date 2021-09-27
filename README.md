@@ -10,7 +10,7 @@ PostgreSQL, Express, React, Node
 
 ## Demo Video
 
-
+https://user-images.githubusercontent.com/68786365/134990426-32c46ec9-e89b-4785-af25-155c830c35e7.mp4
 
 ## Project Setup
 
