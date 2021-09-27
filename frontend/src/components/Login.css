@@ -5,3 +5,11 @@
   border: 1px solid gray;
   border-radius: 0.4rem;
 }
+
+.login-heading{
+  text-align: center;
+}
+
+.incorrect-credentials{
+  margin-top: 1rem;
+}

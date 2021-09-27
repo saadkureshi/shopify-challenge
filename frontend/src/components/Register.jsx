@@ -34,6 +34,7 @@ function Register() {
   return (
     <div className="register">
       <Form>
+      <h2 className="register-heading">Register</h2>
       <Form.Group className="mb-3" controlId="formFirstName">
           <Form.Label>First Name</Form.Label>
           <Form.Control 

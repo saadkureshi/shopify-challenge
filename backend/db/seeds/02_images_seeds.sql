@@ -1,5 +1,5 @@
-INSERT INTO images (user_id, image, description, private)
+INSERT INTO images (user_id, image_url, private)
 VALUES 
-(1, './images/mt-royal.jpeg', 'A glorious day at Mount Royal!', false),
-(2, './images/mi7.jpeg', 'Mission Impossible 7 coming soon..', false),
-(3, './images/donda.jpeg', 'DONDA out now!', false)
+(1, 'https://res.cloudinary.com/dczi19lhz/image/upload/v1632704877/mt-royal_feq9y9.jpg', false),
+(2, 'https://res.cloudinary.com/dczi19lhz/image/upload/v1632704876/mi7_wwvizj.jpg', false),
+(3, 'https://res.cloudinary.com/dczi19lhz/image/upload/v1632704876/donda_didt0k.jpg', false)

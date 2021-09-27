@@ -1,32 +1,36 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
-// import './NavigationBar.css';
+import './NavigationBar.css';
 
 function NavigationBar() {
+
+  const userLoggedIn = localStorage.getItem("user_details");
+
+  let userEmail = "";
+  if (userLoggedIn){
+    userEmail = (localStorage.getItem("user_details") && JSON.parse(localStorage.getItem("user_details"))?.email);
+  }
+
   return (
     <div className="navigation-bar">
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-        <Navbar.Brand href="#home">Shopifly</Navbar.Brand>
+        <Navbar.Brand href="#home">Image Repository</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-            <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-            </NavDropdown>
+            <Nav.Link href="/feed">Feed</Nav.Link>
+            <Nav.Link href="/profile">Profile</Nav.Link>
           </Nav>
-          <Nav>
-            <Nav.Link href="#deets">Sign Up</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
-              Login
-            </Nav.Link>
+          {userLoggedIn ? 
+            <Nav>
+              <Nav.Link href="#deets">Welcome, {userEmail}</Nav.Link>
+            </Nav>
+            :
+            <Nav>
+            <Nav.Link href="#deets">Join today for free!</Nav.Link>
           </Nav>
+          }
         </Navbar.Collapse>
         </Container>
       </Navbar>

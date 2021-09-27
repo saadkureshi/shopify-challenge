@@ -24,8 +24,7 @@ CREATE TABLE users (
 CREATE TABLE images (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  image BYTEA,
-  description VARCHAR(255),
+  image_url TEXT,
   private BOOLEAN,
   created_at TIMESTAMP DEFAULT NOW()
 );
