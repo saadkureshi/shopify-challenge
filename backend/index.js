@@ -72,6 +72,7 @@ app.post("/upload", (req, res) => {
 
 });
 
+// Refresh token
 app.post("/refresh", (req, res) => {
   // Take the refresh token from the user
   const refreshToken = req.body.token;
@@ -102,6 +103,7 @@ app.post("/refresh", (req, res) => {
 
 });
 
+// Login user
 app.post("/login", async(req, res) => {
   try {
     const email = req.body.email;

@@ -6,7 +6,11 @@ This is an image repository app created for the Shopify Developer Intern challen
 
 ## Stack Used
 
-PostgreSQL, Express, React, Node 
+PostgreSQL, Express, React, Node
+
+## Demo Video
+
+
 
 ## Project Setup
 
