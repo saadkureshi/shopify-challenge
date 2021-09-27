@@ -3,14 +3,12 @@ const app = express();
 const cors = require("cors");
 const pool = require("./db/db");
 const jwt = require("jsonwebtoken");
-const fileUpload = require('express-fileupload');
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
 // MIDDLEWARE
 app.use(cors());
 app.use(express.json());
-app.use(fileUpload());
 
 // HELPER FUNCTIONS
 
@@ -52,6 +50,16 @@ const verify = (req, res, next) => {
 
 // ROUTES
 
+// Server homepage
+app.get("/", async(req, res) => {
+  try {
+    res.json("Welcome to the backend server.");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+// Upload image
 app.post("/upload", (req, res) => {
   const userId = req.body.userId;
   const secureUrl = req.body.secureUrl;
@@ -108,6 +116,7 @@ app.post("/login", async(req, res) => {
       const hashedPassword = user.rows[0].password;
       bcrypt.compare(password, hashedPassword, function(err, result) {
         if (result === true) {
+
           // Generate access token
           const accessToken = generateAccessToken(user.rows[0]);
 
@@ -121,7 +130,6 @@ app.post("/login", async(req, res) => {
             accessToken,
             refreshToken
           });
-          // res.redirect("/feed");
         } else {
           console.log("The password entered is incorrect.")
           res.status(400).json("The password entered is incorrect.");
@@ -133,7 +141,7 @@ app.post("/login", async(req, res) => {
   }
 });
 
-// Logout route
+// Logout user
 app.post("/logout", verify, async(req, res) => {
   try {
     const refreshToken = req.body.token;
@@ -190,7 +198,7 @@ app.get("/users", async(req, res) => {
   }
 });
 
-// Get all images
+// Get all images for all users
 app.get("/images", async(req, res) => {
   try {
     const allImages = await pool.query("SELECT * FROM images");
@@ -200,33 +208,21 @@ app.get("/images", async(req, res) => {
   }
 });
 
-// Get a user
-app.get("/users/:id", async(req, res) => {
+// Get all images for a particular user
+app.get("/images/:id", async(req, res) => {
   try {
     const { id } = req.params;
-    const user = await pool.query(
-      "SELECT * FROM users WHERE id = $1", [id]
-    );
-    res.json(user.rows);
+    if (id === null || id === ""){
+      res.json("Please log in to view your profile.");
+    }
+    const myImages = await pool.query("SELECT * FROM images WHERE user_id = $1", [id]);
+    res.json(myImages.rows);
   } catch (err) {
     console.error(err.message);
   }
 });
 
 // Get a user
-app.get("/users/:id", async(req, res) => {
-  try {
-    const { id } = req.params;
-    const user = await pool.query(
-      "SELECT * FROM users WHERE id = $1", [id]
-    );
-    res.json(user.rows);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-
-// Get all pictures for a user
 app.get("/users/:id", async(req, res) => {
   try {
     const { id } = req.params;
