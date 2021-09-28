@@ -26,3 +26,10 @@ Prerequisites: User needs to have node, npm, and postgreSQL installed on their m
   - `db/seeds/01_users_seeds.sql`
   - `db/seeds/02_images_seeds.sql`
 - Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+## Future Improvements
+
+The following features can be left for future improvements due to time constraints:
+
+- Test Suites
+- Search and delete images
